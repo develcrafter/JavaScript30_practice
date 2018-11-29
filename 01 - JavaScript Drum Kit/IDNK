@@ -1,0 +1,8 @@
+HTML:
+<audio>, <kbd>
+DOM:
+window
+Event:
+keydown, transitionend
+ES6:
+=>, this, Array.from()

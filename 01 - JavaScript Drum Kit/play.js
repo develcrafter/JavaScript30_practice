@@ -2,9 +2,8 @@ const PLAYING_CN = "playing";
 
 function playSound(event) {
   const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
-  if (audio === null) {
-    return;
-  }
+  if (audio === null) return;
+  // console.dir(audio);
   audio.currentTime = 0;
   audio.play();
 
@@ -12,15 +11,10 @@ function playSound(event) {
   key.classList.add(PLAYING_CN);
 }
 
-window.addEventListener("keydown", playSound);
-
-function transitionEnd(event) {
-  //   if (event.propertyName !== "transform") {
-  //     return;
-  //   }
-
+function removePlaying(event) {
   this.classList.remove(PLAYING_CN);
 }
 
-const keys = document.querySelectorAll(".key");
-keys.forEach(key => key.addEventListener("transitionend", transitionEnd));
+window.addEventListener("keydown", playSound);
+const keys = Array.from(document.querySelectorAll(".key"));
+keys.forEach(key => key.addEventListener("transitionend", removePlaying));
